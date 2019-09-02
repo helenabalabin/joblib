@@ -761,8 +761,6 @@ class Parallel(Logger):
 
     def _print(self, msg, msg_args):
         """Display the message on stout or stderr depending on verbosity"""
-        # XXX: Not using the logger framework: need to
-        # learn to use logger better.
         if not self.verbose:
             return
         if self.verbose < 50:
@@ -770,6 +768,9 @@ class Parallel(Logger):
         else:
             writer = sys.stdout.write
         msg = msg % msg_args
+        # Use the debug function of the Logger that this Parallel class
+        # inherits from in addition to displaying the msg to the stderr/stdout
+        debug('[%s]: %s\n' % (self, msg))
         writer('[%s]: %s\n' % (self, msg))
 
     def print_progress(self):
