@@ -18,6 +18,7 @@ import itertools
 from numbers import Integral
 import warnings
 from functools import partial
+import logging
 
 from ._multiprocessing_helpers import mp
 
@@ -768,9 +769,8 @@ class Parallel(Logger):
         else:
             writer = sys.stdout.write
         msg = msg % msg_args
-        # Use the debug function of the Logger that this Parallel class
-        # inherits from in addition to displaying the msg to the stderr/stdout
-        super.debug('[%s]: %s\n' % (self, msg))
+        # Use logging in addition to printing the message to stdout/stderr
+        logging.debug('[%s]: %s\n' % (self, msg))
         writer('[%s]: %s\n' % (self, msg))
 
     def print_progress(self):
