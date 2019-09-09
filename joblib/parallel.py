@@ -770,7 +770,7 @@ class Parallel(Logger):
         msg = msg % msg_args
         # Use the debug function of the Logger that this Parallel class
         # inherits from in addition to displaying the msg to the stderr/stdout
-        debug('[%s]: %s\n' % (self, msg))
+        super.debug('[%s]: %s\n' % (self, msg))
         writer('[%s]: %s\n' % (self, msg))
 
     def print_progress(self):
