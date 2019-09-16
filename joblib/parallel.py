@@ -769,9 +769,9 @@ class Parallel(Logger):
         else:
             writer = sys.stdout.write
         msg = msg % msg_args
-        # Use logging in addition to printing the message to stdout/stderr
+        # Use logging instead of printing the message to stdout/stderr
         logging.debug('[%s]: %s\n' % (self, msg))
-        writer('[%s]: %s\n' % (self, msg))
+        # writer('[%s]: %s\n' % (self, msg))
 
     def print_progress(self):
         """Display the process of the parallel execution only a fraction
